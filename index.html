@@ -1,1 +1,56 @@
-Привет 238!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  <form action="" method="" class="form">
+    <label class="form__label" for="registerName">Имя и фамилия</label>
+    <input class="form__input" name="name" type="text" id="registerName" placeholder="Пётр Сметанников">
+    </br> 
+    <hr>
+    <label class="form__label" for="registerEmail">Электропочта</label>
+    <input class="form__input" name="email" type="email" id="registerEmail" placeholder="your@email.com">
+    </br>
+    <hr>
+    <label class="form__label" for="registerTel">Телефонный номер</label>
+    <input class="form__input" name="tel" type="tel" id="registerTel" placeholder="+380975556677">
+    </br>
+    <hr>
+    <label class="form__label" for="registerPassword">Пароль</label>
+    <input class="form__input" name="password" type="password" id="registerPassword" placeholder="Введите свой пароль">
+    </br>
+    <hr>
+    <label class="form__label" for="registerPassword" width="400">Напиши что-то</label>
+    <input class="form__input" name="text" type="text" id="registerText" placeholder="Введите свой пароль" >
+    </br>
+    <hr>
+    <input class="form__button form__submit" type="submit" value="Зарегистрироваться">
+  </form>
+
+<script>
+  const registrationForm = document.querySelector('.form');
+  document.getElementById('registerText').style.width = '50%'
+  registrationForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const password = formData.get('password');
+      const tel = formData.get('tel');
+      const text = formData.get('text');
+      const payload = {
+          name:name,
+          email:email,
+          phone:tel,
+          password:password,
+          text: text,
+      };
+      localStorage.setItem('testSQL', JSON.stringify(payload));
+  });
+  </script>
+</body>
+</html>
